@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "lucide-react": "^1.74.0",
+    "react-markdown": "^10.1.0",
+    "shadcn-ui": "^0.9.5"
+  }
+}
