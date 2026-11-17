@@ -1,0 +1,12 @@
+venv/
+db/
+__pycache__/
+
+*.pyc
+*.pyo
+
+.gradio/
+
+docs/
+
+.env
