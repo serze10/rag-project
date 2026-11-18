@@ -10,9 +10,6 @@ export function Sidebar() {
           PDF Assistant
         </h1>
 
-        <p className={styles.sidebarSubtitle}>
-          Your document assistant
-        </p>
       </div>
 
       <div className={styles.uploadSection}>

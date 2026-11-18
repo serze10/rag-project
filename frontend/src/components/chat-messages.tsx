@@ -21,9 +21,6 @@ export function ChatMessages({
             Ask about your documents
           </h2>
 
-          <p className={styles.emptyText}>
-            Ask questions about your documents
-          </p>
         </div>
       )}
 
