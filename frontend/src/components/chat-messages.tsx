@@ -18,11 +18,11 @@ export function ChatMessages({
       {messages.length === 0 && (
         <div className={styles.emptyState}>
           <h2 className={styles.emptyTitle}>
-            Kysy dokumenteistasi
+            Ask about your documents
           </h2>
 
           <p className={styles.emptyText}>
-            Semantic Search + RAG + Ollama
+            Ask questions about your documents
           </p>
         </div>
       )}
@@ -55,7 +55,7 @@ export function ChatMessages({
 
         {loading && (
           <div className={styles.loading}>
-            🤖 Ajatellaan...
+            Thinking...
           </div>
         )}
       </div>

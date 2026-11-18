@@ -23,7 +23,7 @@ export function ChatInput({
           onChange={(event) =>
             onQuestionChange(event.target.value)
           }
-          placeholder="Kysy dokumenteistasi..."
+          placeholder="Ask about your documents..."
           className={styles.textarea}
           onKeyDown={(event) => {
             if (

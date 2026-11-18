@@ -7,24 +7,24 @@ export function Sidebar() {
     <aside className={styles.sidebar}>
       <div className={styles.sidebarHeader}>
         <h1 className={styles.sidebarTitle}>
-          PDF RAG Assistant
+          PDF Assistant
         </h1>
 
         <p className={styles.sidebarSubtitle}>
-          Ollama + ChromaDB + FastAPI
+          Your document assistant
         </p>
       </div>
 
       <div className={styles.uploadSection}>
         <button className={styles.uploadButton}>
           <Upload size={18} />
-          Upload PDF
+          Add PDF
         </button>
       </div>
 
       <div className={styles.documents}>
         <h2 className={styles.documentsTitle}>
-          Dokumentit
+          Documents
         </h2>
 
         <div className={styles.documentItem}>
