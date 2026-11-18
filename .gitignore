@@ -1,12 +1,34 @@
+# Python
+.venv/
 venv/
-db/
 __pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
 
-*.pyc
-*.pyo
-
-.gradio/
-
+# Local data and documents
+db/
 docs/
 
+# Gradio
+.gradio/
+
+# Node.js / Next.js
+node_modules/
+.next/
+out/
+.turbo/
+.vercel/
+coverage/
+*.tsbuildinfo
+
+# Local environment variables
 .env
+.env.*
+!.env.example
