@@ -4,10 +4,12 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
+from chromadb import PersistentClient
 
 
-DOCS_DIR = "docs"
-DB_DIR = "db"
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DOCS_DIR = PROJECT_ROOT / "docs"
+DB_DIR = PROJECT_ROOT / "db"
 
 
 def ingest_documents():
@@ -42,6 +44,13 @@ def ingest_documents():
     embeddings = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
+
+    try:
+        PersistentClient(path=str(DB_DIR)).delete_collection(
+            "langchain"
+        )
+    except Exception:
+        pass
 
     vectorstore = Chroma.from_documents(
         documents=chunks,

@@ -1,8 +1,21 @@
 import { FileText, Upload } from "lucide-react";
+import { useRef } from "react";
 
 import styles from "../styles/chat.module.css";
 
-export function Sidebar() {
+interface SidebarProps {
+  documents: string[];
+  uploading: boolean;
+  onUpload: (files: File[]) => void;
+}
+
+export function Sidebar({
+  documents,
+  uploading,
+  onUpload,
+}: SidebarProps) {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebarHeader}>
@@ -13,9 +26,32 @@ export function Sidebar() {
       </div>
 
       <div className={styles.uploadSection}>
-        <button className={styles.uploadButton}>
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="application/pdf,.pdf"
+          multiple
+          hidden
+          onChange={(event) => {
+            const files = Array.from(
+              event.target.files ?? []
+            );
+            if (files.length > 0) {
+              onUpload(files);
+            }
+            event.target.value = "";
+          }}
+        />
+        <button
+          className={styles.uploadButton}
+          type="button"
+          disabled={uploading}
+          onClick={() =>
+            fileInputRef.current?.click()
+          }
+        >
           <Upload size={18} />
-          Add PDF
+          {uploading ? "Adding..." : "Add PDF"}
         </button>
       </div>
 
@@ -24,10 +60,15 @@ export function Sidebar() {
           Documents
         </h2>
 
-        <div className={styles.documentItem}>
-          <FileText size={18} />
-          Canaries.pdf
-        </div>
+        {documents.map((document) => (
+          <div
+            key={document}
+            className={styles.documentItem}
+          >
+            <FileText size={18} />
+            {document}
+          </div>
+        ))}
       </div>
     </aside>
   );
